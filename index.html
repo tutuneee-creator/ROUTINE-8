@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROUTINE-8 | DAROGA/POLICE/BPSC/BSSC | YT-DREAMDOSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a0f2b; --navy2:#141c47; --indigo:#1d2761; --gold:#f2b705; --amber:#ff7a29;
+  --green:#2fd48a; --red:#ff4d5e; --cream:#f6f1e4; --dim:#aab0d6;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; min-height:100vh; font-family:'Hind',sans-serif;
+  background:radial-gradient(circle at 20% 0%,var(--indigo),var(--navy) 60%);
+  color:var(--cream); display:flex; flex-direction:column; align-items:center;
+}
+h1,h2,h3,.disp{font-family:'Baloo 2',cursive;}
+.watermark{
+  position:sticky; top:0; z-index:50; width:100%; text-align:center;
+  background:linear-gradient(90deg,var(--gold),var(--amber));
+  color:#1a0f00; font-family:'Baloo 2',cursive; font-weight:800;
+  letter-spacing:.5px; text-transform:uppercase; padding:10px 8px;
+  font-size:clamp(13px,2.4vw,18px); box-shadow:0 4px 14px rgba(0,0,0,.4);
+}
+.wrap{width:100%; max-width:760px; padding:18px 16px 60px;}
+.hero{text-align:center; padding:28px 10px 10px;}
+.hero h1{font-size:clamp(28px,6vw,42px); margin:6px 0; color:var(--gold); text-shadow:0 2px 0 rgba(0,0,0,.3);}
+.hero p{color:var(--dim); font-size:15px; margin:4px 0 20px;}
+.card{
+  background:linear-gradient(160deg,var(--navy2),var(--indigo));
+  border:1px solid rgba(242,183,5,.25); border-radius:18px; padding:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35); margin-bottom:16px;
+}
+.btn{
+  display:inline-block; cursor:pointer; border:none; border-radius:12px;
+  padding:14px 26px; font-family:'Baloo 2',cursive; font-weight:700; font-size:17px;
+  background:linear-gradient(90deg,var(--gold),var(--amber)); color:#1a0f00;
+  box-shadow:0 6px 0 #b5790a; transition:transform .1s;
+}
+.btn:active{transform:translateY(4px); box-shadow:0 2px 0 #b5790a;}
+.btn.secondary{background:transparent; color:var(--gold); border:2px solid var(--gold); box-shadow:none;}
+.center{text-align:center;}
+input[type=text]{
+  width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.06); color:var(--cream); font-size:16px; margin-bottom:14px;
+}
+.taghead{
+  display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; gap:10px; flex-wrap:wrap;
+}
+.tagline{
+  font-family:'Baloo 2',cursive; font-weight:700; color:var(--amber); font-size:18px;
+}
+.cat-tag{
+  display:inline-block; background:rgba(242,183,5,.15); border:1px solid rgba(242,183,5,.4);
+  color:var(--gold); padding:4px 10px; border-radius:20px; font-size:12px; font-weight:600;
+}
+.progress{color:var(--dim); font-size:13px;}
+.timer-wrap{display:flex; justify-content:center; margin:6px 0 14px;}
+.timer-ring{
+  --pct:100; width:78px; height:78px; border-radius:50%;
+  background:conic-gradient(var(--green) calc(var(--pct)*1%), rgba(255,255,255,.08) 0);
+  display:flex; align-items:center; justify-content:center; transition:background .3s linear;
+}
+.timer-ring.warn{background:conic-gradient(var(--red) calc(var(--pct)*1%), rgba(255,255,255,.08) 0);}
+.timer-inner{
+  width:62px; height:62px; border-radius:50%; background:var(--navy2);
+  display:flex; align-items:center; justify-content:center; font-family:'Baloo 2',cursive;
+  font-weight:700; font-size:20px; color:var(--cream);
+}
+.motivate{text-align:center; color:var(--dim); font-size:14px; margin:0 0 14px; font-style:italic;}
+.qtext{font-size:17px; line-height:1.55; margin-bottom:16px;}
+.qtext b{color:var(--gold);}
+.matchbox{display:flex; gap:14px; margin-bottom:16px; flex-wrap:wrap;}
+.matchcol{flex:1; min-width:140px; background:rgba(255,255,255,.04); border-radius:10px; padding:10px;}
+.matchcol h4{margin:0 0 8px; color:var(--amber); font-size:14px;}
+.matchrow{font-size:14px; padding:4px 0; border-bottom:1px dashed rgba(255,255,255,.1);}
+.options{display:flex; flex-direction:column; gap:10px;}
+.opt{
+  text-align:left; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.15);
+  color:var(--cream); border-radius:12px; padding:13px 16px; font-size:15px; cursor:pointer;
+  transition:.15s; line-height:1.4;
+}
+.opt:hover{background:rgba(242,183,5,.12); border-color:var(--gold);}
+.opt.correct{background:rgba(47,212,138,.2); border-color:var(--green); color:#eafff5;}
+.opt.wrong{background:rgba(255,77,94,.2); border-color:var(--red); color:#ffecee;}
+.opt[disabled]{cursor:default;}
+.result{margin-top:16px; padding:14px; border-radius:12px; font-size:15px; line-height:1.5;}
+.result.ok{background:rgba(47,212,138,.12); border:1px solid rgba(47,212,138,.4);}
+.result.bad{background:rgba(255,77,94,.12); border:1px solid rgba(255,77,94,.4);}
+.result h3{margin:0 0 8px; font-family:'Baloo 2',cursive;}
+.result.ok h3{color:var(--green);}
+.result.bad h3{color:var(--red);}
+.next-row{margin-top:16px; text-align:center;}
+.overlay{
+  position:fixed; inset:0; background:rgba(5,8,25,.85); display:flex; align-items:center;
+  justify-content:center; z-index:100; padding:20px;
+}
+.board{
+  background:linear-gradient(160deg,var(--navy2),var(--indigo)); border:2px solid var(--gold);
+  border-radius:20px; padding:30px 26px; max-width:380px; width:100%; text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+.board h2{color:var(--gold); margin:0 0 14px;}
+.board .stat{display:flex; justify-content:space-between; font-size:16px; margin:8px 0;}
+.board .comment{margin:16px 0; color:var(--amber); font-weight:600;}
+.scorebar{
+  display:flex; justify-content:space-between; color:var(--dim); font-size:13px; margin-bottom:10px;
+}
+.scorebar b{color:var(--gold);}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+</head>
+<body>
+<div class="watermark">🔥 YT-DREAMDOSE (ROUTINE-8): DAROGA/POLICE/BPSC/BSSC 🔥</div>
+<div class="wrap" id="app"></div>
+
+<script>
+function opt(en,hi){return {en,hi};}
+function Q(cat,en,hi,options,correct,exp_en,exp_hi,matchTable,tip){
+  return {cat,en,hi,options,correct,exp_en,exp_hi,matchTable:matchTable||null,tip:tip||null};
+}
+function stOpt(s){
+  const n=s.split(",");
+  if(n.length===4)return opt("1, 2, 3 and 4","1, 2, 3 और 4");
+  const last=n.pop();
+  const en=n.length?n.join(", ")+" and "+last+" only":last+" only";
+  const hi=n.length?"केवल "+n.join(", ")+" और "+last:"केवल "+last;
+  return opt(en,hi);
+}
+function SQ(cat,tEn,tHi,sEn,sHi,ans,correct,expEn,expHi,tip){
+  const en=tEn+"<br>"+sEn.map((s,i)=>(i+1)+". "+s).join("<br>")+"<br>Which of the statements given above are correct?";
+  const hi=tHi+"<br>"+sHi.map((s,i)=>(i+1)+". "+s).join("<br>")+"<br>उपर्युक्त में से कौन-से कथन सही हैं?";
+  return Q(cat,en,hi,ans.map(stOpt),correct,expEn,expHi,null,tip);
+}
+function MQ(cat,tEn,tHi,left,right,ans,correct,expEn,expHi,tip){
+  return Q(cat,tEn,tHi,ans.map(a=>opt(a.replace(/,/g,", "),a.replace(/,/g,", "))),correct,expEn,expHi,{left:left,right:right},tip);
+}
+const I="INC History / कांग्रेस इतिहास";
+const RV="Indian Rivers / भारतीय नदियां";
+const AF="African Capitals / अफ्रीकी राजधानियां";
+const EX="Excretory System / उत्सर्जन तंत्र";
+const TOTAL_TIME=120;
+
+const QUESTIONS=[
+
+SQ(I,"Statements regarding the foundation of the Indian National Congress (INC):","भारतीय राष्ट्रीय कांग्रेस (INC) की स्थापना के संबंध में कथन:",
+ ["INC was founded in December 1885 in Bombay.","Allan Octavian Hume (A.O. Hume) played a key role as its founder.","The first session was presided over by Dadabhai Naoroji.","A total of 72 delegates attended the first session of INC."],
+ ["INC की स्थापना दिसंबर 1885 में बॉम्बे में हुई थी।","एलन ऑक्टेवियन ह्यूम (A.O. ह्यूम) ने इसके संस्थापक के रूप में प्रमुख भूमिका निभाई।","इसके पहले अधिवेशन की अध्यक्षता दादाभाई नौरोजी ने की थी।","INC के पहले अधिवेशन में कुल 72 प्रतिनिधियों ने भाग लिया था।"],
+ ["1,3","1,2,4","2,3","1,2,3,4"],1,
+ "Statements 1, 2 and 4 are correct. Statement 3 is wrong — W.C. Bonnerjee (not Dadabhai Naoroji) presided over the first session (Gokuldas Tejpal Sanskrit College, Bombay, 28 Dec 1885).",
+ "INC की स्थापना 28 दिसंबर 1885 को बॉम्बे के गोकुलदास तेजपाल संस्कृत कॉलेज में A.O. ह्यूम द्वारा की गई थी और इसमें 72 प्रतिनिधियों ने भाग लिया था। पहले अधिवेशन की अध्यक्षता व्योमेश चंद्र बनर्जी (W.C. Bonnerjee) ने की थी, दादाभाई नौरोजी ने नहीं।",
+ "First INC President = W.C. Bonnerjee; Naoroji presided in 1886, 1893 and 1906."),
+
+SQ(I,"Statements regarding the 1907 Surat Split of INC:","INC के 1907 के सूरत विभाजन के संबंध में कथन:",
+ ["The session was held on the banks of the Tapti River in Surat.","Rash Behari Ghosh presided over the Surat session in 1907.","The Congress split into two factions: Moderates and Extremists.","Moderates were led by Bal Gangadhar Tilak."],
+ ["यह अधिवेशन सूरत में ताप्ती नदी के तट पर हुआ था।","रास बिहारी घोष ने 1907 के सूरत अधिवेशन की अध्यक्षता की थी।","कांग्रेस दो गुटों में विभाजित हो गई: नरमपंथी और गरमपंथी।","नरमपंथियों का नेतृत्व बाल गंगाधर तिलक कर रहे थे।"],
+ ["1,2,3","1,4","2","1,2,3,4"],0,
+ "Statements 1, 2 and 3 are correct. Statement 4 is wrong — Tilak led the Extremists; the Moderates were led by Gopal Krishna Gokhale and Pherozeshah Mehta.",
+ "1907 के सूरत अधिवेशन में कांग्रेस नरमदल और गरमदल में विभाजित हो गई। अध्यक्षता रास बिहारी घोष ने की। गरमपंथियों (लाल-बाल-पाल) का नेतृत्व तिलक, लाजपत राय और बिपिन चंद्र पाल ने किया, जबकि नरमपंथियों का नेतृत्व गोपाल कृष्ण गोखले और फिरोजशाह मेहता ने।",
+ "Surat Split 1907 → Extremists: Lal-Bal-Pal; Moderates: Gokhale & Mehta."),
+
+SQ(I,"Statements regarding the Lucknow Pact (1916):","लखनऊ समझौते (1916) के संबंध में कथन:",
+ ["Ambica Charan Mazumdar was the President of the 1916 Lucknow Congress session.","Moderates and Extremists were reunited in this session.","INC and the All India Muslim League signed a historic pact in 1916.","INC rejected the principle of separate electorates for Muslims."],
+ ["अंबिका चरण मजूमदार 1916 के लखनऊ कांग्रेस अधिवेशन के अध्यक्ष थे।","इस अधिवेशन में नरमपंथियों और गरमपंथियों का पुनर्मिलन हुआ।","INC और अखिल भारतीय मुस्लिम लीग ने 1916 में एक ऐतिहासिक समझौते पर हस्ताक्षर किए।","INC ने मुसलमानों के लिए पृथक निर्वाचन क्षेत्र के सिद्धांत को खारिज कर दिया।"],
+ ["1,2","1,2,3","3,4","1,3,4"],1,
+ "Statements 1, 2 and 3 are correct. Statement 4 is wrong — in the Lucknow Pact, Congress ACCEPTED the principle of separate electorates for Muslims.",
+ "1916 के लखनऊ अधिवेशन में ए.सी. मजूमदार की अध्यक्षता में नरमदल और गरमदल का पुनर्मिलन हुआ। इसी अधिवेशन में कांग्रेस ने मुस्लिम लीग के साथ समझौता किया और पृथक निर्वाचन क्षेत्र के सिद्धांत को स्वीकार कर लिया था (नाकी खारिज किया था)।",
+ "Lucknow 1916 = Congress–League pact + reunion of Moderates and Extremists."),
+
+SQ(I,"Statements regarding Annie Besant's association with INC:","INC के साथ एनी बेसेंट के जुड़ाव के संबंध में कथन:",
+ ["She was the first woman President of the Indian National Congress.","She presided over the 1917 Calcutta session of INC.","She was born in India and started the Home Rule League in 1916.","She edited newspapers 'New India' and 'Commonweal'."],
+ ["वह भारतीय राष्ट्रीय कांग्रेस की पहली महिला अध्यक्ष थीं।","उन्होंने INC के 1917 के कलकत्ता अधिवेशन की अध्यक्षता की।","उनका जन्म भारत में हुआ था और उन्होंने 1916 में होम रूल लीग शुरू की थी।","उन्होंने 'न्यू इंडिया' और 'कॉमनवील' समाचार पत्रों का संपादन किया।"],
+ ["1,2,4","1,3","2,3","1,2,3,4"],0,
+ "Statements 1, 2 and 4 are correct. Statement 3 is wrong — Annie Besant was born in Ireland (not India), though she started the Home Rule League in 1916.",
+ "एनी बेसेंट 1917 के कलकत्ता अधिवेशन में कांग्रेस की पहली महिला अध्यक्ष बनीं और उन्होंने 'न्यू इंडिया' व 'कॉमनवील' अखबार निकाले। हालाँकि, उनका जन्म आयरलैंड में हुआ था, भारत में नहीं।",
+ "Annie Besant = first woman INC President (1917, Calcutta), born in Ireland."),
+
+SQ(I,"Statements regarding Sarojini Naidu's Presidency:","सरोजिनी नायडू की कांग्रेस अध्यक्षता के संबंध में कथन:",
+ ["She was the first Indian woman President of the INC.","She presided over the 1925 Kanpur session of the INC.","She was known as the 'Nightingale of India' (Bharat Kokila).","She was appointed the first woman Governor of an Indian state (United Provinces)."],
+ ["वह INC की पहली भारतीय महिला अध्यक्ष थीं।","उन्होंने INC के 1925 के कानपुर अधिवेशन की अध्यक्षता की।","उन्हें 'भारत कोकिला' के नाम से जाना जाता था।","उन्हें किसी भारतीय राज्य (संयुक्त प्रांत) की पहली महिला राज्यपाल नियुक्त किया गया था।"],
+ ["1,2","3,4","1,2,3,4","1,2,4"],2,
+ "All four statements are correct.",
+ "सरोजिनी नायडू 1925 के कानपुर अधिवेशन में कांग्रेस की पहली 'भारतीय' महिला अध्यक्ष बनीं (जबकि एनी बेसेंट पहली विदेशी महिला अध्यक्ष थीं)। वे आजादी के बाद उत्तर प्रदेश (संयुक्त प्रांत) की पहली महिला राज्यपाल भी बनीं।",
+ "Besant = first woman President; Sarojini Naidu = first INDIAN woman President."),
+
+SQ(I,"Statements regarding the 1929 Lahore Session of INC:","INC के 1929 के लाहौर अधिवेशन के संबंध में कथन:",
+ ["Jawaharlal Nehru was the President of this landmark session.","The resolution for 'Purna Swaraj' (Complete Independence) was adopted here.","It was decided to observe January 26, 1930 as Independence Day.","Tricolor flag was unfurled on the banks of the Ravi River."],
+ ["जवाहरलाल नेहरू इस ऐतिहासिक अधिवेशन के अध्यक्ष थे।","यहाँ 'पूर्ण स्वराज' (पूर्ण स्वतंत्रता) का प्रस्ताव अपनाया गया था।","26 जनवरी 1930 को स्वतंत्रता दिवस के रूप में मनाने का निर्णय लिया गया।","रावी नदी के तट पर तिरंगा झंडा फहराया गया।"],
+ ["1,2","3,4","1,2,3,4","1,3,4"],2,
+ "All four statements are correct.",
+ "1929 के लाहौर अधिवेशन में जवाहरलाल नेहरू की अध्यक्षता में 'पूर्ण स्वराज' का ऐतिहासिक प्रस्ताव पारित किया गया। 31 दिसंबर 1929 की रात रावी नदी के तट पर तिरंगा फहराया गया और 26 जनवरी 1930 को पहला स्वतंत्रता दिवस मनाने का आह्वान किया गया।",
+ "Lahore 1929 (Nehru) → Purna Swaraj; first Independence Day = 26 Jan 1930."),
+
+SQ(I,"Statements regarding Subhash Chandra Bose and INC:","सुभाष चंद्र बोस और INC के संबंध में कथन:",
+ ["Subhash Chandra Bose was elected INC President at Haripura in 1938.","He defeated Pattabhi Sitaramayya in the 1939 Tripura session presidential election.","Mahatma Gandhi backed Pattabhi Sitaramayya in the 1939 election.","Bose resigned from Congress presidency in 1939 and formed Forward Bloc."],
+ ["सुभाष चंद्र बोस 1938 में हरिपुरा में INC अध्यक्ष चुने गए थे।","उन्होंने 1939 के त्रिपुरी अधिवेशन के अध्यक्षीय चुनाव में पट्टाभि सीतारमैय्या को हराया था।","महात्मा गांधी ने 1939 के चुनाव में पट्टाभि सीतारमैय्या का समर्थन किया था।","बोस ने 1939 में कांग्रेस अध्यक्ष पद से इस्तीफा दे दिया और फॉरवर्ड ब्लॉक का गठन किया।"],
+ ["1,2,3,4","1,2","3,4","1,2,4"],0,
+ "All four statements are correct.",
+ "सुभाष चंद्र बोस 1938 (हरिपुरा) और 1939 (त्रिपुरी) में अध्यक्ष चुने गए। 1939 में उन्होंने गांधीजी के उम्मीदवार पट्टाभि सीतारमैय्या को हराया, जिससे गांधीजी ने इसे अपनी व्यक्तिगत हार बताया। वैचारिक मतभेदों के कारण बोस ने इस्तीफा देकर मई 1939 में 'फॉरवर्ड ब्लॉक' बनाया।",
+ "Haripura 1938 and Tripuri 1939 = Bose's two presidencies."),
+
+SQ(I,"Statements regarding Mahatma Gandhi's INC Presidency:","महात्मा गांधी की INC अध्यक्षता के संबंध में कथन:",
+ ["Mahatma Gandhi presided over the Belgaum session of INC in 1924.","This was the only INC session ever presided over by Mahatma Gandhi.","Belgaum is located in the present-day state of Karnataka.","Gandhi became Congress President immediately after returning to India in 1915."],
+ ["महात्मा गांधी ने 1924 में INC के बेलगाम अधिवेशन की अध्यक्षता की थी।","यह महात्मा गांधी द्वारा अध्यक्षता किया गया एकमात्र INC अधिवेशन था।","बेलगाम वर्तमान कर्नाटक राज्य में स्थित है।","गांधीजी 1915 में भारत लौटने के तुरंत बाद कांग्रेस अध्यक्ष बन गए थे।"],
+ ["1,2,3","1,4","2,4","1,2,3,4"],0,
+ "Statements 1, 2 and 3 are correct. Statement 4 is wrong — Gandhi did not become President in 1915; his only presidency was in 1924.",
+ "महात्मा गांधी ने अपने पूरे जीवन में केवल एक बार 1924 के बेलगाम (कर्नाटक) अधिवेशन की अध्यक्षता की थी। वे 1915 में भारत लौटने के तुरंत बाद अध्यक्ष नहीं बने थे।",
+ "Gandhi presided only once — Belgaum, 1924."),
+
+SQ(I,"Statements regarding the 1931 Karachi Session of INC:","INC के 1931 के कराची अधिवेशन के संबंध में कथन:",
+ ["Sardar Vallabhbhai Patel presided over the Karachi session in 1931.","Resolution on Fundamental Rights was passed in this session.","Resolution on National Economic Programme was adopted here.","The session endorsed the Gandhi-Irwin Pact."],
+ ["सरदार वल्लभभाई पटेल ने 1931 के कराची अधिवेशन की अध्यक्षता की थी।","इस अधिवेशन में मौलिक अधिकारों पर प्रस्ताव पारित किया गया था।","यहाँ राष्ट्रीय आर्थिक कार्यक्रम पर प्रस्ताव अपनाया गया था।","इस अधिवेशन ने गांधी-इरविन समझौते का समर्थन किया।"],
+ ["1,2","3,4","1,2,3,4","1,3,4"],2,
+ "All four statements are correct.",
+ "सरदार पटेल की अध्यक्षता में 1931 के कराची अधिवेशन में पहली बार 'मौलिक अधिकारों' और 'राष्ट्रीय आर्थिक कार्यक्रम' का प्रस्ताव पारित किया गया तथा गांधी-इरविन समझौते को मंजूरी दी गई।",
+ "Karachi 1931 (Patel) = Fundamental Rights + National Economic Programme."),
+
+SQ(I,"Statements regarding INC sessions held in Rural areas:","ग्रामीण क्षेत्रों में आयोजित INC अधिवेशनों के संबंध में कथन:",
+ ["The 1937 Faizpur session was the first INC session held in a rural area.","Jawaharlal Nehru presided over the 1937 Faizpur session.","Faizpur is located in Maharashtra.","Mahatma Gandhi presided over the Faizpur session."],
+ ["1937 का फैजपुर अधिवेशन ग्रामीण क्षेत्र में आयोजित पहला INC अधिवेशन था।","जवाहरलाल नेहरू ने 1937 के फैजपुर अधिवेशन की अध्यक्षता की थी।","फैजपुर महाराष्ट्र में स्थित है।","महात्मा गांधी ने फैजपुर अधिवेशन की अध्यक्षता की थी।"],
+ ["1,2,3","1,4","2,3","1,2,3,4"],0,
+ "Statements 1, 2 and 3 are correct. Statement 4 is wrong — Jawaharlal Nehru, not Gandhi, presided at Faizpur.",
+ "1937 में महाराष्ट्र के फैजपुर में आयोजित 50वाँ अधिवेशन किसी गाँव/ग्रामीण इलाके में होने वाला पहला कांग्रेस अधिवेशन था, जिसकी अध्यक्षता जवाहरलाल नेहरू ने की थी।",
+ "Faizpur 1937 = first village session (Maharashtra), President Nehru."),
+
+SQ(I,"Statements regarding INC Sessions in Bihar:","बिहार में आयोजित INC अधिवेशनों के संबंध में कथन:",
+ ["The 27th session of INC was held at Bankipore (Patna) in 1912.","R.N. Mudholkar presided over the 1912 Bankipore session.","Deshbandhu Chittaranjan Das presided over the 1922 Gaya session.","A.O. Hume was declared 'Father of the Congress' at the Bankipore session."],
+ ["INC का 27वाँ अधिवेशन 1912 में बांकीपुर (पटना) में हुआ था।","आर.एन. मधोलकर ने 1912 के बांकीपुर अधिवेशन की अध्यक्षता की थी।","देशबंधु चित्तरंजन दास ने 1922 के गया अधिवेशन की अध्यक्षता की थी।","बांकीपुर अधिवेशन में ए.ओ. ह्यूम को 'कांग्रेस का पिता' घोषित किया गया था।"],
+ ["1,2","3,4","1,2,3,4","1,3,4"],2,
+ "All four statements are correct. (Bihar-specific — very important for Bihar Police exams.)",
+ "बिहार में पहला अधिवेशन 1912 में बांकीपुर (पटना) में आर.एन. मधोलकर की अध्यक्षता में हुआ (जहाँ A.O. ह्यूम को 'कांग्रेस का पिता' कहा गया)। दूसरा 1922 में गया में सी.आर. दास की अध्यक्षता में हुआ।",
+ "Bihar sessions: Bankipore 1912 (Mudholkar) and Gaya 1922 (C.R. Das)."),
+
+SQ(I,"Statements regarding Muslim Presidents of INC:","INC के मुस्लिम अध्यक्षों के संबंध में कथन:",
+ ["Badruddin Tyabji was the first Muslim President of INC.","He presided over the 1887 Madras session of INC.","Rahimtulla M. Sayani presided over the 1896 Calcutta session when Vande Mataram was first sung.","Maulana Abul Kalam Azad was the youngest person to become INC President (1923)."],
+ ["बदरुद्दीन तैयबजी INC के पहले मुस्लिम अध्यक्ष थे।","उन्होंने INC के 1887 के मद्रास अधिवेशन की अध्यक्षता की।","रहीमतुल्ला एम. सयानी ने 1896 के कलकत्ता अधिवेशन की अध्यक्षता की जब पहली बार 'वंदे मातरम' गाया गया था।","मौलाना अबुल कलाम आजाद INC अध्यक्ष (1923) बनने वाले सबसे युवा व्यक्ति थे।"],
+ ["1,2,3,4","1,2","3,4","1,2,4"],0,
+ "All four statements are correct.",
+ "बदरुद्दीन तैयबजी पहले मुस्लिम अध्यक्ष (1887, मद्रास) थे। रहीमतुल्ला सयानी की अध्यक्षता वाले 1896 के कलकत्ता अधिवेशन में पहली बार रवींद्रनाथ टैगोर द्वारा 'वंदे मातरम' गाया गया। मौलाना आजाद 1923 (दिल्ली विशेष अधिवेशन) में 35 वर्ष की आयु में सबसे युवा अध्यक्ष बने।",
+ "Tyabji 1887 = first Muslim President; Azad 1923 = youngest President."),
+
+SQ(I,"Statements regarding British/Foreign Presidents of INC:","INC के ब्रिटिश/विदेशी अध्यक्षों के संबंध में कथन:",
+ ["George Yule was the first English/foreign President of INC (1888 Allahabad session).","Sir William Wedderburn presided over two INC sessions (1889 & 1910).","Alfred Webb presided over the 1894 Madras session.","Henry Cotton presided over the 1904 Bombay session."],
+ ["जॉर्ज यूले INC के पहले अंग्रेज/विदेशी अध्यक्ष थे (1888 इलाहाबाद अधिवेशन)।","सर विलियम वेडरबर्न ने दो INC अधिवेशनों (1889 और 1910) की अध्यक्षता की।","अल्फ्रेड वेब ने 1894 के मद्रास अधिवेशन की अध्यक्षता की।","हेनरी कॉटन ने 1904 के बॉम्बे अधिवेशन की अध्यक्षता की।"],
+ ["1,2","3,4","1,2,3,4","1,2,4"],2,
+ "All four statements are correct.",
+ "जॉर्ज यूले (1888), विलियम वेडरबर्न (1889 व 1910), अल्फ्रेड वेब (1894), और हेनरी कॉटन (1904) - ये सभी विदेशी/ब्रिटिश नागरिक थे जिन्होंने कांग्रेस अधिवेशनों की अध्यक्षता की।",
+ "George Yule (1888) = first English President of INC."),
+
+SQ(I,"Statements regarding INC at the time of Indian Independence:","भारतीय स्वतंत्रता के समय INC के संबंध में कथन:",
+ ["J.B. Kripalani was the President of INC when India gained independence in 1947.","He presided over the Meerut session of INC in November 1946.","Abul Kalam Azad served as INC President continuously from 1940 to 1946.","Pattabhi Sitaramayya was the first INC President elected after Independence (1948 Jaipur)."],
+ ["1947 में भारत की स्वतंत्रता के समय जे.बी. कृपलानी INC के अध्यक्ष थे।","उन्होंने नवंबर 1946 में INC के मेरठ अधिवेशन की अध्यक्षता की थी।","अबुल कलाम आजाद ने 1940 से 1946 तक लगातार INC अध्यक्ष के रूप में कार्य किया।","पट्टाभि सीतारमैय्या स्वतंत्रता के बाद निर्वाचित होने वाले पहले INC अध्यक्ष (1948 जयपुर) थे।"],
+ ["1,2,3,4","1,2","3,4","1,2,4"],0,
+ "All four statements are correct.",
+ "15 अगस्त 1947 को स्वतंत्रता के समय जे.बी. कृपलानी अध्यक्ष थे। द्वितीय विश्वयुद्ध और भारत छोड़ो आंदोलन के कारण 1940 से 1946 तक मौलाना आजाद सबसे लंबे समय तक अध्यक्ष रहे। आजादी के बाद 1948 में पट्टाभि सीतारमैय्या बने।",
+ "Kripalani = President at Independence (1947); Azad = longest serving (1940–46)."),
+
+SQ(I,"Statements regarding Dadabhai Naoroji and INC:","दादाभाई नौरोजी और INC के संबंध में कथन:",
+ ["Dadabhai Naoroji presided over three INC sessions (1886, 1893, 1906).","The word 'Swaraj' was first used from the INC platform in the 1906 Calcutta session under his presidency.","He was popularly known as the 'Grand Old Man of India'.","He authored the book 'Poverty and Un-British Rule in India'."],
+ ["दादाभाई नौरोजी ने तीन INC अधिवेशनों (1886, 1893, 1906) की अध्यक्षता की।","1906 के कलकत्ता अधिवेशन में उनकी अध्यक्षता में पहली बार INC के मंच से 'स्वराज' शब्द का प्रयोग किया गया था।","उन्हें लोकप्रिय रूप से 'भारत के ग्रैंड ओल्ड मैन' के रूप में जाना जाता था।","उन्होंने 'पावर्टी एंड अन-ब्रिटिश रूल इन इंडिया' पुस्तक लिखी थी।"],
+ ["1,2","3,4","1,2,3,4","1,3,4"],2,
+ "All four statements are correct.",
+ "'ग्रैंड ओल्ड मैन ऑफ इंडिया' दादाभाई नौरोजी ने 3 बार (1886, 1893, 1906) अध्यक्षता की। 1906 के कलकत्ता अधिवेशन में ही पहली बार कांग्रेस मंच से 'स्वराज' शब्द का प्रयोग किया गया था।",
+ "Naoroji = Grand Old Man of India; 'Swaraj' first used in 1906."),
+
+MQ(I,"Match List-I (INC Session) with List-II (President):","सूची-I (INC अधिवेशन) को सूची-II (अध्यक्ष) से सुमेलित करें:",
+ ["A. 1885 Bombay / 1885 बॉम्बे","B. 1886 Calcutta / 1886 कलकत्ता","C. 1887 Madras / 1887 मद्रास","D. 1888 Allahabad / 1888 इलाहाबाद"],
+ ["1. W.C. Bonnerjee / व्योमेश चंद्र बनर्जी","2. Dadabhai Naoroji / दादाभाई नौरोजी","3. Badruddin Tyabji / बदरुद्दीन तैयबजी","4. George Yule / जॉर्ज यूले"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-4,B-2,C-1,D-3"],0,
+ "1885 Bombay → W.C. Bonnerjee, 1886 Calcutta → Dadabhai Naoroji, 1887 Madras → Badruddin Tyabji, 1888 Allahabad → George Yule.",
+ "पहले चार अधिवेशनों के अध्यक्षों का क्रम: 1885 बॉम्बे (व्योमेश चंद्र बनर्जी), 1886 कलकत्ता (दादाभाई नौरोजी), 1887 मद्रास (बदरुद्दीन तैयबजी - प्रथम मुस्लिम), और 1888 इलाहाबाद (जॉर्ज यूले - प्रथम अंग्रेज)।",
+ "Tyabji = first Muslim President; Yule = first English President."),
+
+MQ(I,"Match List-I (Key Event in INC History) with List-II (Session & Year):","सूची-I (INC इतिहास की प्रमुख घटना) को सूची-II (अधिवेशन व वर्ष) से सुमेलित करें:",
+ ["A. First singing of Vande Mataram / पहली बार वंदे मातरम का गायन","B. First singing of Jana Gana Mana / पहली बार जन गण मन का गायन","C. Purna Swaraj Resolution / पूर्ण स्वराज प्रस्ताव","D. Re-union of Moderates & Extremists / नरमपंथियों व गरमपंथियों का मिलन"],
+ ["1. 1896 Calcutta / 1896 कलकत्ता","2. 1911 Calcutta / 1911 कलकत्ता","3. 1929 Lahore / 1929 लाहौर","4. 1916 Lucknow / 1916 लखनऊ"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-3,B-4,C-1,D-2"],0,
+ "Vande Mataram → 1896 Calcutta, Jana Gana Mana → 1911 Calcutta, Purna Swaraj → 1929 Lahore, Re-union → 1916 Lucknow.",
+ "वंदे मातरम पहली बार 1896 कलकत्ता में गाया गया। जन गण मन पहली बार 1911 कलकत्ता में गाया गया। पूर्ण स्वराज का प्रस्ताव 1929 लाहौर में आया और गरम-नरम दल 1916 लखनऊ में एक हुए।",
+ "Vande Mataram 1896; Jana Gana Mana 1911 (both Calcutta)."),
+
+MQ(I,"Match List-I (INC President) with List-II (Historical Significance/Feature):","सूची-I (INC अध्यक्ष) को सूची-II (ऐतिहासिक महत्व/विशेषता) से सुमेलित करें:",
+ ["A. Annie Besant / एनी बेसेंट","B. Sarojini Naidu / सरोजिनी नायडू","C. Mahatma Gandhi / महात्मा गांधी","D. J.B. Kripalani / जे.बी. कृपलानी"],
+ ["1. First Woman President (1917) / पहली महिला अध्यक्ष","2. First Indian Woman President (1925) / पहली भारतीय महिला अध्यक्ष","3. Presided only once at Belgaum (1924) / बेलगाम में केवल एक बार अध्यक्षता की","4. President during Indian Independence (1947) / भारतीय स्वतंत्रता के समय अध्यक्ष"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-4,B-3,C-1,D-2"],0,
+ "Besant → first woman President (1917), Naidu → first Indian woman President (1925), Gandhi → presided once (Belgaum 1924), Kripalani → President at Independence (1947).",
+ "एनी बेसेंट पहली महिला अध्यक्ष (1917), सरोजिनी नायडू पहली भारतीय महिला अध्यक्ष (1925), महात्मा गांधी केवल एक बार अध्यक्ष बने (1924), और जे.बी. कृपलानी 1947 की आजादी के समय अध्यक्ष थे।",
+ null),
+
+Q(I,"Who was the Viceroy of India when the Indian National Congress was formed in 1885?","1885 में भारतीय राष्ट्रीय कांग्रेस की स्थापना के समय भारत का वायसराय कौन था?",
+ [opt("Lord Ripon","लॉर्ड रिपन"),opt("Lord Dufferin","लॉर्ड डफरिन"),opt("Lord Curzon","लॉर्ड कर्जन"),opt("Lord Lytton","लॉर्ड लिटन")],1,
+ "Lord Dufferin (1884–1888) was the Viceroy in 1885; he mocked the Congress as a 'microscopic minority'.",
+ "1885 में कांग्रेस की स्थापना के समय भारत का वायसराय लॉर्ड डफरिन (कार्यकाल: 1884-1888) था। डफरिन ने कांग्रेस को \"सूक्ष्मदर्शी अल्पसंख्यकों की संस्था\" (microscopic minority) कहकर इसका मजाक उड़ाया था।",
+ null,"Viceroy at INC foundation (1885) = Lord Dufferin."),
+
+Q(I,"At which session of the Indian National Congress was the national song 'Vande Mataram' sung for the first time?","भारतीय राष्ट्रीय कांग्रेस के किस अधिवेशन में पहली बार राष्ट्रीय गीत 'वंदे मातरम' गाया गया था?",
+ [opt("1885 Bombay","1885 बॉम्बे"),opt("1896 Calcutta","1896 कलकत्ता"),opt("1905 Banaras","1905 बनारस"),opt("1911 Calcutta","1911 कलकत्ता")],1,
+ "Vande Mataram was first sung at the 1896 Calcutta session, presided over by Rahimtulla M. Sayani, sung by Rabindranath Tagore.",
+ "राष्ट्रीय गीत 'वंदे मातरम' पहली बार 1896 के कलकत्ता अधिवेशन में गाया गया था, जिसकी अध्यक्षता रहीमतुल्ला एम. सयानी ने की थी। इसे रवींद्रनाथ टैगोर ने गाया था।",
+ null),
+
+Q(I,"Who presided over the 1911 Calcutta session of the Indian National Congress where 'Jana Gana Mana' was sung for the first time?","भारतीय राष्ट्रीय कांग्रेस के 1911 के कलकत्ता अधिवेशन की अध्यक्षता किसने की थी जहाँ पहली बार 'जन गण मन' गाया गया था?",
+ [opt("Bishan Narayan Dar","बिशन नारायण धर"),opt("Rahimtulla M. Sayani","रहीमतुल्ला एम. सयानी"),opt("Rash Behari Ghosh","रास बिहारी घोष"),opt("Bhupendra Nath Bose","भूपेंद्र नाथ बोस")],0,
+ "Pt. Bishan Narayan Dar presided over the 1911 Calcutta session, where 'Jana Gana Mana' was first sung on 27 December 1911.",
+ "राष्ट्रगान 'जन गण मन' पहली बार 27 दिसंबर 1911 को कांग्रेस के कलकत्ता अधिवेशन में गाया गया था। इस अधिवेशन की अध्यक्षता पंडित बिशन नारायण धर (Bishan Narayan Dar) ने की थी।",
+ null),
+
+Q(I,"Who was the President of the Indian National Congress during the famous 1905 Banaras session held after the Partition of Bengal?","बंगाल विभाजन के बाद आयोजित 1905 के प्रसिद्ध बनारस अधिवेशन के दौरान भारतीय राष्ट्रीय कांग्रेस के अध्यक्ष कौन थे?",
+ [opt("Bal Gangadhar Tilak","बाल गंगाधर तिलक"),opt("Gopal Krishna Gokhale","गोपाल कृष्ण गोखले"),opt("Dadabhai Naoroji","दादाभाई नौरोजी"),opt("Lala Lajpat Rai","लाला लाजपत राय")],1,
+ "Gopal Krishna Gokhale presided over the 1905 Banaras session, which opposed the Partition of Bengal and supported Swadeshi and Boycott.",
+ "1905 के बनारस अधिवेशन की अध्यक्षता गोपाल कृष्ण गोखले ने की थी। इस अधिवेशन में लॉर्ड कर्जन द्वारा किए गए बंगाल विभाजन का विरोध किया गया और स्वदेशी व बहिष्कार आंदोलन का समर्थन किया गया।",
+ null),
+
+Q(I,"In which year was the Special Session of INC held in Calcutta where the Non-Cooperation movement resolution was presented by Mahatma Gandhi?","कलकत्ता में INC का विशेष अधिवेशन किस वर्ष आयोजित किया गया था जहाँ महात्मा गांधी द्वारा असहयोग आंदोलन का प्रस्ताव प्रस्तुत किया गया था?",
+ [opt("1919","1919"),opt("1920","1920"),opt("1921","1921"),opt("1922","1922")],1,
+ "The Special Session at Calcutta (September 1920, President Lala Lajpat Rai) saw Gandhi present the Non-Cooperation resolution; the Nagpur session (December 1920) finalised it.",
+ "सितंबर 1920 में कलकत्ता में कांग्रेस का एक विशेष अधिवेशन लाला लाजपत राय की अध्यक्षता में आयोजित हुआ, जिसमें गांधीजी ने 'असहयोग आंदोलन' का प्रस्ताव पेश किया। बाद में दिसंबर 1920 के नागपुर अधिवेशन (अध्यक्ष: सी. विजयराघवाचारी) में इसे अंतिम रूप से पारित किया गया।",
+ null),
+
+Q(I,"Who was the President of the 1922 Gaya Session of the Indian National Congress in Bihar?","बिहार में भारतीय राष्ट्रीय कांग्रेस के 1922 के गया अधिवेशन के अध्यक्ष कौन थे?",
+ [opt("Rajendra Prasad","राजेंद्र प्रसाद"),opt("Chittaranjan Das (C.R. Das)","चित्तरंजन दास (सी.आर. दास)"),opt("Mazharul Haque","मजहरुल हक"),opt("Anugrah Narayan Sinha","अनुग्रह नारायण सिंह")],1,
+ "Deshbandhu C.R. Das presided over the 37th (Gaya, Bihar) session in 1922; differences over council entry led to the Swaraj Party in 1923.",
+ "1922 के 37वें गया (बिहार) अधिवेशन की अध्यक्षता देशबंधु चित्तरंजन दास (C.R. Das) ने की थी। परिषदों में प्रवेश को लेकर हुए मतभेद के कारण सी.आर. दास और मोतीलाल नेहरू ने 1923 में 'स्वराज पार्टी' का गठन किया।",
+ null,"Gaya 1922 (Bihar) → C.R. Das → Swaraj Party 1923."),
+
+Q(I,"Who among the following served as the President of the Indian National Congress for six consecutive years (1940 to 1946)?","निम्नलिखित में से किसने लगातार छह वर्षों (1940 से 1946) तक भारतीय राष्ट्रीय कांग्रेस के अध्यक्ष के रूप में कार्य किया?",
+ [opt("Jawaharlal Nehru","जवाहरलाल नेहरू"),opt("Maulana Abul Kalam Azad","मौलाना अबुल कलाम आजाद"),opt("Sardar Vallabhbhai Patel","सरदार वल्लभभाई पटेल"),opt("Rajendra Prasad","राजेंद्र प्रसाद")],1,
+ "Maulana Abul Kalam Azad was elected at Ramgarh (Bihar) in 1940 and, as no new session could be held during WWII and the freedom struggle, continued until 1946.",
+ "मौलाना अबुल कलाम आजाद 1940 में रामगढ़ (बिहार) अधिवेशन में अध्यक्ष चुने गए थे। द्वितीय विश्वयुद्ध और स्वतंत्रता संग्राम के अभियानों के कारण 1940 से 1946 तक कोई नया अधिवेशन आयोजित नहीं हो सका, इसलिए वे लगातार 6 वर्षों तक अध्यक्ष पद पर रहे।",
+ null),
+
+MQ(RV,"Match List-I (River) with List-II (Major Tributary):","सूची-I (नदी) को सूची-II (प्रमुख सहायक नदी) से सुमेलित करें:",
+ ["A. Indus / सिंधु","B. Ganga / गंगा","C. Brahmaputra / ब्रह्मपुत्र","D. Godavari / गोदावरी"],
+ ["1. Zanskar / जास्कर","2. Alaknanda / अलकनंदा","3. Subansiri / सुबनसिरी","4. Indravati / इंद्रावती"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-4,B-2,C-1,D-3"],0,
+ "Indus → Zanskar, Ganga → Alaknanda, Brahmaputra → Subansiri, Godavari → Indravati.",
+ "सिंधु की सहायक नदी जास्कर, गंगा की अलकनंदा, ब्रह्मपुत्र की सुबनसिरी और गोदावरी की इंद्रावती है।",null),
+
+MQ(RV,"Match List-I (River) with List-II (Origin / Source):","सूची-I (नदी) को सूची-II (उद्गम स्थल) से सुमेलित करें:",
+ ["A. Krishna / कृष्णा","B. Kaveri / कावेरी","C. Narmada / नर्मदा","D. Tapi / तापी"],
+ ["1. Mahabaleshwar / महाबलेश्वर","2. Brahmagiri Hills / ब्रह्मगिरि पहाड़ियां","3. Amarkantak Plateau / अमरकंटक पठार","4. Multai / मुलताई"],
+ ["A-2,B-1,C-4,D-3","A-1,B-2,C-3,D-4","A-1,B-3,C-2,D-4","A-3,B-4,C-1,D-2"],1,
+ "Krishna → Mahabaleshwar, Kaveri → Brahmagiri Hills, Narmada → Amarkantak Plateau, Tapi → Multai.",
+ "कृष्णा महाबलेश्वर से, कावेरी ब्रह्मगिरि पहाड़ियों से, नर्मदा अमरकंटक पठार से और तापी मुलताई से निकलती है।",null),
+
+MQ(RV,"Match List-I (River) with List-II (Tributary):","सूची-I (नदी) को सूची-II (सहायक नदी) से सुमेलित करें:",
+ ["A. Yamuna / यमुना","B. Krishna / कृष्णा","C. Indus / सिंधु","D. Mahanadi / महानदी"],
+ ["1. Chambal / चंबल","2. Tungabhadra / तुंगभद्रा","3. Chenab / चिनाब","4. Tel / तेल"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-4,B-3,C-1,D-2"],0,
+ "Yamuna → Chambal, Krishna → Tungabhadra, Indus → Chenab, Mahanadi → Tel.",
+ "चंबल, बेतवा और केन यमुना की प्रमुख सहायक नदियां हैं; तुंगभद्रा और भीमा कृष्णा की सहायक नदियां हैं; चिनाब सिंधु की सबसे बड़ी सहायक नदी है; तेल और शिवनाथ महानदी की सहायक नदियां हैं।",null),
+
+MQ(RV,"Match List-I (Confluence/Prayag) with List-II (Rivers Meeting):","सूची-I (प्रयाग) को सूची-II (मिलने वाली नदियाँ) से सुमेलित करें:",
+ ["A. Devprayag / देवप्रयाग","B. Rudraprayag / रुद्रप्रयाग","C. Karnaprayag / कर्णप्रयाग","D. Vishnuprayag / विष्णुप्रयाग"],
+ ["1. Bhagirathi + Alaknanda / भागीरथी + अलकनंदा","2. Mandakini + Alaknanda / मंदाकिनी + अलकनंदा","3. Pindar + Alaknanda / पिंडर + अलकनंदा","4. Dhauliganga + Alaknanda / धौलीगंगा + अलकनंदा"],
+ ["A-2,B-1,C-4,D-3","A-1,B-2,C-3,D-4","A-1,B-3,C-2,D-4","A-4,B-2,C-1,D-3"],1,
+ "Devprayag → Bhagirathi + Alaknanda, Rudraprayag → Mandakini + Alaknanda, Karnaprayag → Pindar + Alaknanda, Vishnuprayag → Dhauliganga + Alaknanda.",
+ "देवप्रयाग में भागीरथी और अलकनंदा के मिलने पर गंगा नाम बनता है; रुद्रप्रयाग में मंदाकिनी और अलकनंदा मिलती हैं; कर्णप्रयाग में पिंडर और अलकनंदा मिलती हैं; विष्णुप्रयाग में धौलीगंगा और अलकनंदा मिलती हैं।",
+ "Panch Prayag order: Vishnu → Nand → Karna → Rudra → Dev."),
+
+MQ(RV,"Match List-I (River) with List-II (Feature / Tributary):","सूची-I (नदी) को सूची-II (सहायक नदी या विशेषता) से सुमेलित करें:",
+ ["A. Luni / लूनी","B. Brahmaputra / ब्रह्मपुत्र","C. Godavari / गोदावरी","D. Damodar / दामोदर"],
+ ["1. Inland drainage river of Rajasthan / राजस्थान की अंतर्देशीय जलप्रवाह नदी","2. Majuli River Island / माजुली नदी द्वीप","3. Known as 'Dakshin Ganga' / 'दक्षिण गंगा' के नाम से प्रसिद्ध","4. Known as 'Sorrow of Bengal' / 'बंगाल का शोक'"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-3,B-4,C-1,D-2"],0,
+ "Luni → inland drainage of Rajasthan, Brahmaputra → Majuli island, Godavari → Dakshin Ganga, Damodar → Sorrow of Bengal.",
+ "लूनी अरावली से निकलकर कच्छ के रण में विलुप्त हो जाती है; ब्रह्मपुत्र असम में विश्व का सबसे बड़ा नदी द्वीप माजुली बनाती है; गोदावरी प्रायद्वीपीय भारत की सबसे लंबी नदी (1465 किमी) होने के कारण दक्षिण गंगा कहलाती है; दामोदर को बाढ़ के कारण बंगाल का शोक कहा जाता था।",null),
+
+Q(RV,"Which of the following is the largest right-bank tributary of the River Ganga?","निम्नलिखित में से कौन सी नदी गंगा नदी की दाहिने तट की सबसे बड़ी सहायक नदी है?",
+ [opt("Yamuna","यमुना"),opt("Ghaghara","घाघरा"),opt("Son","सोन"),opt("Gandak","गंडक")],0,
+ "The Yamuna, rising from Yamunotri glacier and meeting the Ganga at Prayagraj, is the longest and largest right-bank tributary of the Ganga.",
+ "यमुना यमुनोत्री ग्लेशियर से निकलती है और प्रयागराज में गंगा में मिलती है। यह गंगा की सबसे लंबी और सबसे बड़ी दाहिने तट की (Right-bank) सहायक नदी है।",null,
+ "Ganga right bank: Yamuna, Son. Left bank: Ghaghara, Gandak, Kosi."),
+
+Q(RV,"Which river is known as 'Tsangpo' in Tibet and 'Dihang' in Arunachal Pradesh?","किस नदी को तिब्बत में 'सांगपो' और अरुणाचल प्रदेश में 'दिहांग' के नाम से जाना जाता है?",
+ [opt("Indus","सिंधु"),opt("Brahmaputra","ब्रह्मपुत्र"),opt("Sutlej","सतलुज"),opt("Teesta","तीस्ता")],1,
+ "The Brahmaputra rises near Lake Mansarovar (Chemayungdung glacier), is called Tsangpo in Tibet and Dihang on entering Arunachal Pradesh.",
+ "ब्रह्मपुत्र नदी तिब्बत में मानसरोवर झील के पास चमायुंगडुंग ग्लेशियर से निकलती है जहाँ इसे 'सांगपो' कहा जाता है। भारत के अरुणाचल प्रदेश में प्रवेश करने पर इसे 'दिहांग' कहा जाता है।",null),
+
+Q(RV,"Pranhita, Wardha, and Wainganga are important tributaries of which major Indian river?","प्राणहिता, वर्धा और वैनगंगा किस प्रमुख भारतीय नदी की महत्वपूर्ण सहायक नदियाँ हैं?",
+ [opt("Krishna","कृष्णा"),opt("Mahanadi","महानदी"),opt("Godavari","गोदावरी"),opt("Kaveri","कावेरी")],2,
+ "Penganga, Wainganga, Wardha, Pranhita, Indravati and Manjra are all major tributaries of the Godavari.",
+ "पेनगंगा, वैनगंगा, वर्धा, प्राणिहिता, इंद्रावती और मंजरा - यह सभी प्रायद्वीपीय भारत की सबसे बड़ी नदी गोदावरी की प्रमुख सहायक नदियाँ हैं।",null),
+
+Q(RV,"Which two west-flowing peninsular rivers flow through rift valleys in India?","भारत में दरार घाटी (Rift Valley) से होकर बहने वाली दो प्रमुख पश्चिम की ओर बहने वाली नदियाँ कौन सी हैं?",
+ [opt("Narmada and Tapi","नर्मदा और तापी"),opt("Krishna and Godavari","कृष्णा और गोदावरी"),opt("Luni and Sabarmati","लूनी और साबरमती"),opt("Mahanadi and Brahmani","महानदी और ब्राह्मणी")],0,
+ "Narmada (between Vindhya and Satpura) and Tapi (between Satpura and Ajanta) flow through rift valleys and form estuaries in the Arabian Sea.",
+ "नर्मदा (विंध्य और सतपुड़ा के बीच) तथा तापी (सतपुड़ा और अजंता के बीच) भ्रंश घाटी (Rift Valley) से बहती हैं और अरब सागर में गिरते समय एस्टुअरी (Estuary) का निर्माण करती हैं।",null),
+
+Q(RV,"Which river rises from the Amarkantak plateau and flows northwards to join the Ganga near Patna?","कौन सी नदी अमरकंटक पठार से निकलकर उत्तर की ओर बहती है और पटना के पास गंगा में मिलती है?",
+ [opt("Damodar","दामोदर"),opt("Son","सोन"),opt("Chambal","चंबल"),opt("Ken","केन")],1,
+ "The Son rises at Amarkantak (Madhya Pradesh) and meets the Ganga on its right bank near Patna (Danapur/Maner) in Bihar.",
+ "सोन नदी मध्य प्रदेश के अमरकंटक से निकलती है और उत्तर दिशा में बहती हुई बिहार में पटना के पास (दानापुर/मनेर) गंगा नदी के दाहिने तट में मिलती है।",null,
+ "Son meets the Ganga near Patna — a Bihar favourite."),
+
+MQ(AF,"Match List-I (African Country) with List-II (Capital):","सूची-I (अफ्रीकी देश) को सूची-II (राजधानी) से सुमेलित करें:",
+ ["A. Kenya / केन्या","B. Egypt / मिस्र","C. Nigeria / नाइजीरिया","D. Ethiopia / इथियोपिया"],
+ ["1. Nairobi / नैरोबी","2. Cairo / काहिरा","3. Abuja / अबुजा","4. Addis Ababa / अदीस अबाबा"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-4,B-2,C-1,D-3"],0,
+ "Kenya → Nairobi, Egypt → Cairo, Nigeria → Abuja, Ethiopia → Addis Ababa.",
+ "केन्या की राजधानी नैरोबी (UNEP का मुख्यालय) है; मिस्र की काहिरा (नील नदी के तट पर); नाइजीरिया की अबुजा; और इथियोपिया की राजधानी अदीस अबाबा (अफ्रीकी संघ का मुख्यालय) है।",null),
+
+MQ(AF,"Match List-I (African Country) with List-II (Capital):","सूची-I (अफ्रीकी देश) को सूची-II (राजधानी) से सुमेलित करें:",
+ ["A. Tanzania / तंजानिया","B. Uganda / युगांडा","C. Rwanda / रवांडा","D. Ghana / घाना"],
+ ["1. Dodoma / डोडोमा","2. Kampala / कम्पाला","3. Kigali / किगाली","4. Accra / अकरा"],
+ ["A-2,B-1,C-4,D-3","A-1,B-2,C-3,D-4","A-1,B-3,C-2,D-4","A-3,B-4,C-1,D-2"],1,
+ "Tanzania → Dodoma, Uganda → Kampala, Rwanda → Kigali, Ghana → Accra.",
+ "तंजानिया की राजधानी डोडोमा है; युगांडा की कम्पाला; रवांडा की किगाली; और घाना की राजधानी अकरा है।",null),
+
+MQ(AF,"Match List-I (African Country) with List-II (Capital):","सूची-I (अफ्रीकी देश) को सूची-II (राजधानी) से सुमेलित करें:",
+ ["A. Morocco / मोरक्को","B. Zimbabwe / जिम्बाब्वे","C. Sudan / सूडान","D. South Sudan / दक्षिण सूडान"],
+ ["1. Rabat / रबात","2. Harare / हरारे","3. Khartoum / खार्तूम","4. Juba / जुबा"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-4,B-3,C-1,D-2"],0,
+ "Morocco → Rabat, Zimbabwe → Harare, Sudan → Khartoum, South Sudan → Juba.",
+ "मोरक्को की राजधानी रबात है; जिम्बाब्वे की हरारे; सूडान की खार्तूम (नील नदी का संगम स्थल); और 2011 में बने दक्षिण सूडान की राजधानी जुबा है।",null),
+
+Q(AF,"What is the administrative/executive capital of South Africa?","दक्षिण अफ्रीका की प्रशासनिक/कार्यकारी राजधानी कौन सी है?",
+ [opt("Cape Town","केप टाउन"),opt("Pretoria","प्रिटोरिया"),opt("Bloemfontein","ब्लोमफोनटेन"),opt("Johannesburg","जोहान्सबर्ग")],1,
+ "South Africa has three capitals: Pretoria (administrative/executive), Cape Town (legislative) and Bloemfontein (judicial).",
+ "दक्षिण अफ्रीका की तीन राजधानियां हैं: प्रिटोरिया (प्रशासनिक/कार्यकारी), केप टाउन (विधायी), और ब्लोमफोनटेन (न्यायिक)। जोहान्सबर्ग इसका सबसे बड़ा शहर व आर्थिक केंद्र है।",null,
+ "South Africa: Pretoria (executive), Cape Town (legislative), Bloemfontein (judicial)."),
+
+Q(AF,"What is the capital city of Madagascar, an island country located off the southeastern coast of Africa?","अफ्रीका के दक्षिण-पूर्वी तट पर स्थित द्वीप देश मेडागास्कर की राजधानी क्या है?",
+ [opt("Luanda","लुआंडा"),opt("Antananarivo","अंटानानारिवो"),opt("Maputo","मापुटो"),opt("Port Louis","पोर्ट लुई")],1,
+ "Antananarivo is the capital of Madagascar. Luanda is Angola's, Maputo is Mozambique's and Port Louis is Mauritius's capital.",
+ "मेडागास्कर की राजधानी अंटानानारिवो है। लुआंडा अंगोला की, मापुटो मोजाम्बिक की और पोर्ट लुई मॉरीशस की राजधानी है।",null),
+
+SQ(EX,"Statements regarding Kidney Anatomy and Position:","गुर्दे (Kidney) की शरीर रचना और स्थिति के संबंध में कथन:",
+ ["Human kidneys are bean-shaped organs located retroperitoneally in the abdominal cavity.","The right kidney is placed slightly lower than the left kidney due to the presence of the liver.","Glomerular filtration occurs in the Renal Pelvis.","The outer region of the kidney is called Cortex and the inner region is called Medulla."],
+ ["मानव गुर्दे पेट की गुहा में रेट्रोपेरिटोनियल रूप से स्थित सेम के आकार के अंग हैं।","यकृत (Liver) की उपस्थिति के कारण दाहिना गुर्दा बाएं गुर्दे से थोड़ा नीचे स्थित होता है।","ग्लोमेरुलर निस्पंदन गुर्दे के पेल्विस (Renal Pelvis) में होता है।","गुर्दे का बाहरी क्षेत्र कॉर्टेक्स और आंतरिक क्षेत्र मेडुला कहलाता है।"],
+ ["1,3","1,2,4","2,3,4","1,2,3,4"],1,
+ "Statements 1, 2 and 4 are correct. Statement 3 is wrong — glomerular filtration occurs in the renal corpuscle (Bowman's capsule + glomerulus) in the cortex, not in the renal pelvis.",
+ "कथन 1, 2 और 4 सही हैं। कथन 3 गलत है — ग्लोमेरुलर निस्पंदन वृक्क कणिका (बोमन कैप्सूल + ग्लोमेरुलस) में, यानी कॉर्टेक्स में होता है, रीनल पेल्विस में नहीं।",
+ "Filtration → renal corpuscle (cortex)."),
+
+SQ(EX,"Statements regarding the Structure of Nephron:","नेफ्रॉन की संरचना के संबंध में कथन:",
+ ["Nephron is the structural and functional unit of the human kidney.","Malpighian body (Renal Corpuscle) consists of Glomerulus and Bowman's capsule.","Loop of Henle is located primarily in the Renal Cortex region.","Podocytes are specialized epithelial cells forming the filtration slits in Bowman's capsule."],
+ ["नेफ्रॉन मानव गुर्दे की संरचनात्मक और कार्यात्मक इकाई है।","मालपिघियन निकाय में ग्लोमेरुलस और बोमन कैप्सूल शामिल हैं।","हेनले का लूप मुख्य रूप से गुर्दे के कॉर्टेक्स क्षेत्र में स्थित होता है।","पोडोसाइट्स विशिष्ट कोशिकाएं हैं जो बोमन कैप्सूल में छानने की झिल्ली (filtration slits) बनाती हैं।"],
+ ["1,2,4","1,3","2,3","1,2,3,4"],0,
+ "Statements 1, 2 and 4 are correct. Statement 3 is wrong — the Loop of Henle lies mainly in the renal medulla.",
+ "कथन 1, 2 और 4 सही हैं। कथन 3 गलत है — हेनले का लूप मुख्य रूप से गुर्दे के मेडुला क्षेत्र में स्थित होता है, कॉर्टेक्स में नहीं।",null),
+
+SQ(EX,"Statements regarding Glomerular Filtration Rate (GFR):","ग्लोमेरुलर निस्पंदन दर (GFR) के संबंध में कथन:",
+ ["GFR is the amount of filtrate formed by both kidneys per minute (~125 mL/min).","Normal total volume of filtrate formed per day is about 180 Liters.","Over 99% of the glomerular filtrate is reabsorbed by the renal tubules.","Juxtaglomerular Apparatus (JGA) plays a key role in regulating GFR."],
+ ["GFR प्रति मिनट दोनों गुर्दों द्वारा गठित निस्पंद की मात्रा (~125 mL/min) है।","प्रति दिन बनने वाले कुल निस्पंद की मात्रा लगभग 180 लीटर होती है।","ग्लोमेरुलर निस्पंद का 99% से अधिक हिस्सा वृक्क नलिकाओं द्वारा पुनः अवशोषित हो जाता है।","जक्स्टाग्लोमेरुलर उपकरण (JGA) GFR को विनियमित करने में महत्वपूर्ण भूमिका निभाता है।"],
+ ["1,2","3,4","1,2,3,4","1,3,4"],2,
+ "All four statements are correct.",
+ "चारों कथन सही हैं: GFR ≈ 125 mL/min ≈ 180 लीटर/दिन; 99% से अधिक निस्पंद पुनः अवशोषित होता है; JGA GFR के नियमन में भूमिका निभाता है।",
+ "GFR ≈ 125 mL/min ≈ 180 L/day."),
+
+SQ(EX,"Statements regarding Tubular Reabsorption in Nephron:","नेफ्रॉन में नलिकाकार पुनःअवशोषण (Tubular Reabsorption) पर कथन:",
+ ["Proximal Convoluted Tubule (PCT) reabsorbs nearly 70-80% of electrolytes and water.","Glucose and amino acids are reabsorbed in PCT through active transport.","Descending limb of Loop of Henle is permeable to water but impermeable to electrolytes.","Ascending limb of Loop of Henle is permeable to water and impermeable to salts."],
+ ["निकटस्थ संवलित नलिका (PCT) लगभग 70-80% इलेक्ट्रोलाइट्स और पानी को पुनः अवशोषित करती है।","ग्लूकोज और अमीनो एसिड PCT में सक्रिय परिवहन द्वारा पुनः अवशोषित होते हैं।","हेनले लूप की अवरोही भुजा पानी के लिए पारगम्य है लेकिन इलेक्ट्रोलाइट्स के लिए अपारगम्य है।","हेनले लूप की आरोही भुजा पानी के लिए पारगम्य और लवणों के लिए अपारगम्य है।"],
+ ["1,2,3","1,4","2,4","1,2,3,4"],0,
+ "Statements 1, 2 and 3 are correct. Statement 4 is wrong — the ascending limb is impermeable to water (it actively transports salts out).",
+ "कथन 1, 2 और 3 सही हैं। कथन 4 गलत है — आरोही भुजा पानी के लिए अपारगम्य होती है और लवणों का सक्रिय परिवहन करती है।",
+ "Descending limb: water permeable. Ascending limb: water impermeable."),
+
+SQ(EX,"Statements regarding Hormonal Regulation of Urine Formation:","मूत्र निर्माण के हार्मोनल विनियमन के संबंध में कथन:",
+ ["Antidiuretic Hormone (ADH / Vasopressin) increases water reabsorption in DCT and Collecting Duct.","ADH is synthesized by the Hypothalamus and released from Posterior Pituitary.","Aldosterone promotes Na+ and water reabsorption in distal tubules.","Atrial Natriuretic Factor (ANF) acts as a vasoconstrictor to increase blood pressure."],
+ ["एंटीडाययूरेटिक हार्मोन (ADH) DCT और संग्राहक नलिका में पानी के पुनःअवशोषण को बढ़ाता है।","ADH हाइपोथैलेमस द्वारा संश्लेषित होता है और पश्च पीयूष ग्रंथि से स्रावित होता है।","एल्डोस्टेरोन दूरस्थ नलिकाओं में Na+ और पानी के पुनःअवशोषण को बढ़ावा देता है।","एट्रियल नैट्रियूरेटिक फैक्टर (ANF) रक्तचाप बढ़ाने के लिए वैसोकॉन्स्ट्रिक्टर के रूप में कार्य करता है।"],
+ ["1,2,3","1,4","2,3","1,2,3,4"],0,
+ "Statements 1, 2 and 3 are correct. Statement 4 is wrong — ANF is a vasodilator that lowers blood pressure.",
+ "कथन 1, 2 और 3 सही हैं। कथन 4 गलत है — ANF एक वैसोडाइलेटर है जो रक्तचाप को घटाता है।",
+ "ANF = vasodilator (opposes RAAS)."),
+
+SQ(EX,"Statements regarding Nitrogenous Waste Products:","नाइट्रोजनी अपशिष्ट उत्पादों के संबंध में कथन:",
+ ["Ammonia is the most toxic nitrogenous waste requiring large amounts of water for excretion.","Bony fishes, aquatic amphibians, and aquatic insects are Ammonotelic.","Mammals, terrestrial amphibians, and marine fishes are Ureotelic.","Birds, reptiles, land snails, and insects excrete Uric acid as Uricotelic organisms."],
+ ["अमोनिया सबसे जहरीला नाइट्रोजनी अपशिष्ट है जिसके उत्सर्जन के लिए अत्यधिक पानी की आवश्यकता होती है।","अस्थिल मछलियां, जलीय उभयचर और जलीय कीट अमोनोटेलिक होते हैं।","स्तनधारी, स्थलीय उभयचर और समुद्री मछलियां यूरियोटेलिक होते हैं।","पक्षी, सरीसृप, भू-घोंघे और कीट यूरिकोटेलिक जीवों के रूप में यूरिक एसिड उत्सर्जित करते हैं।"],
+ ["1,2","3,4","1,2,3,4","1,2,4"],2,
+ "All four statements are correct.",
+ "चारों कथन सही हैं: अमोनिया सबसे जहरीला है; अमोनोटेलिक, यूरियोटेलिक और यूरिकोटेलिक जीवों के उदाहरण सही दिए गए हैं।",
+ "Ammonotelic → Ureotelic → Uricotelic (toxicity falls, water need falls)."),
+
+SQ(EX,"Statements regarding the Renin-Angiotensin-Aldosterone System (RAAS):","रेनिन-एंजियोटेंसिन-एल्डोस्टेरोन प्रणाली (RAAS) के संबंध में कथन:",
+ ["Decrease in glomerular blood pressure/GFR stimulates JGA cells to release Renin.","Renin converts Angiotensinogen in blood plasma to Angiotensin I.","Angiotensin II is a powerful vasoconstrictor that increases glomerular blood pressure.","Angiotensin II inhibits the release of Aldosterone from Adrenal Cortex."],
+ ["ग्लोमेरुलर रक्तचाप/GFR में कमी JGA कोशिकाओं को रेनिन जारी करने के लिए उत्तेजित करती है।","रेनिन रक्त प्लाज्मा में एंजियोटेंसिनोजन को एंजियोटेंसिन I में परिवर्तित करता है।","एंजियोटेंसिन II एक शक्तिशाली वैसोकॉन्स्ट्रिक्टर है जो ग्लोमेरुलर रक्तचाप को बढ़ाता है।","एंजियोटेंसिन II एड्रेनल कॉर्टेक्स से एल्डोस्टेरोन के स्राव को रोकता है।"],
+ ["1,2,3","1,4","2,3","1,2,3,4"],0,
+ "Statements 1, 2 and 3 are correct. Statement 4 is wrong — Angiotensin II STIMULATES aldosterone release from the adrenal cortex.",
+ "कथन 1, 2 और 3 सही हैं। कथन 4 गलत है — एंजियोटेंसिन II एड्रेनल कॉर्टेक्स से एल्डोस्टेरोन के स्राव को उत्तेजित करता है, रोकता नहीं।",null),
+
+SQ(EX,"Statements regarding Chemical Composition of Normal Human Urine:","सामान्य मानव मूत्र के रासायनिक संयोजन के संबंध में कथन:",
+ ["Normal human urine is slightly acidic with an average pH of 6.0.","On average, 25-30 grams of Urea is excreted per day by an adult human.","Presence of Glucose in urine is called Glycosuria and indicates Diabetes Mellitus.","Presence of Ketone bodies in urine is called Ketonuria."],
+ ["सामान्य मानव मूत्र औसतन 6.0 pH के साथ थोड़ा अम्लीय होता है।","औसतन, एक मानव वयस्क द्वारा प्रति दिन 25-30 ग्राम यूरिया उत्सर्जित किया जाता है।","मूत्र में ग्लूकोज की उपस्थिति ग्लाइकोसुरिया कहलाती है और मधुमेह का संकेत देती है।","मूत्र में कीटोन निकायों की उपस्थिति कीटोन्यूरिया कहलाती है।"],
+ ["1,2","3,4","1,2,3,4","1,3,4"],2,
+ "All four statements are correct.",
+ "चारों कथन सही हैं: सामान्य मूत्र का pH लगभग 6.0, यूरिया 25-30 ग्राम/दिन, ग्लाइकोसुरिया (ग्लूकोज) और कीटोन्यूरिया (कीटोन निकाय)।",
+ "Glycosuria = glucose in urine; Ketonuria = ketone bodies."),
+
+SQ(EX,"Statements regarding Disorders of Excretory System:","उत्सर्जन तंत्र के विकारों के संबंध में कथन:",
+ ["Uremia is the accumulation of urea in blood due to kidney malfunction.","Renal Calculi are insoluble masses of crystallized salts (e.g., calcium oxalates) formed in kidney.","Glomerulonephritis is the inflammation of glomeruli of kidneys.","Hemodialysis is used to remove excess urea and wastes from blood in uremic patients."],
+ ["गुर्दे की विफलता के कारण रक्त में यूरिया का संचय यूरेमिया कहलाता है।","रीनल कैल्कुली (पथरी) गुर्दे में बनने वाले क्रिस्टलीकृत लवणों (जैसे कैल्शियम ऑक्सलेट) के द्रव्यमान हैं।","ग्लोमेरुलोनेफ्राइटिस गुर्दे के ग्लोमेरुली की सूजन है।","हेमोडायलिसिस का उपयोग यूरेमिक रोगियों में रक्त से अतिरिक्त यूरिया और अपशिष्ट को हटाने के लिए किया जाता है।"],
+ ["1,2","3,4","1,2,3,4","1,3,4"],2,
+ "All four statements are correct.",
+ "चारों कथन सही हैं: यूरेमिया, रीनल कैल्कुली, ग्लोमेरुलोनेफ्राइटिस और हेमोडायलिसिस की परिभाषाएं सही हैं।",null),
+
+SQ(EX,"Statements regarding Other Organs in Excretion:","उत्सर्जन में सहायता करने वाले अन्य अंगों के संबंध में कथन:",
+ ["Lungs remove approximately 18 Liters of CO2 per hour (~200 mL/min).","Liver converts toxic ammonia into less toxic urea via the Ornithine cycle.","Sweat glands secrete sweat containing NaCl, small amounts of urea, and lactic acid.","Sebaceous glands eliminate sterols, hydrocarbons, and waxes through sebum."],
+ ["फेफड़े लगभग 200 मिली/मिनट की दर से CO2 को बाहर निकालते हैं।","यकृत ऑर्निथिन चक्र के माध्यम से जहरीली अमोनिया को कम जहरीले यूरिया में बदलता है।","पसीने की ग्रंथियां NaCl, यूरिया और लैक्टिक एसिड युक्त पसीना स्रावित करती हैं।","सेबेशियस ग्रंथियां सीबम के माध्यम से स्टेरोल्स, हाइड्रोकार्बन और मोम को बाहर निकालती हैं।"],
+ ["1,2,3,4","1,2","3,4","1,2,3"],0,
+ "All four statements are correct.",
+ "चारों कथन सही हैं: फेफड़े CO2, यकृत यूरिया (ऑर्निथिन चक्र), पसीने की ग्रंथियां NaCl-यूरिया-लैक्टिक एसिड, और सेबेशियस ग्रंथियां सीबम के रूप में स्टेरोल्स आदि का उत्सर्जन करती हैं।",null),
+
+SQ(EX,"Statements regarding Renal Hemodynamics and Filtration Pressure:","वृक्क हेमोडायनामिक्स और निस्पंदन दबाव (Filtration Pressure) पर कथन:",
+ ["Glomerular Hydrostatic Pressure (GHP) promotes filtration (~60 mmHg).","Blood Colloidal Osmotic Pressure (BCOP) opposes filtration (~32 mmHg).","Capsular Hydrostatic Pressure (CHP) opposes filtration (~18 mmHg).","Net Filtration Pressure (NFP) is calculated as NFP = GHP - (BCOP + CHP) ≈ 10 mmHg."],
+ ["ग्लोमेरुलर हाइड्रोस्टैटिक दबाव (GHP) निस्पंदन को बढ़ावा देता है।","रक्त कोलाइडल परासरणी दबाव (BCOP) निस्पंदन का विरोध करता है।","कैप्सुलर हाइड्रोस्टैटिक दबाव (CHP) निस्पंदन का विरोध करता है।","शुद्ध निस्पंदन दबाव की गणना NFP = GHP - (BCOP + CHP) ≈ 10 mmHg के रूप में की जाती है।"],
+ ["1,2","3,4","1,2,3,4","1,3,4"],2,
+ "All four statements are correct: 60 − (32 + 18) = 10 mmHg.",
+ "चारों कथन सही हैं: NFP = 60 − (32 + 18) = 10 mmHg।",
+ "NFP = 60 − (32 + 18) = 10 mmHg."),
+
+MQ(EX,"Match List-I (Nephron Region) with List-II (Primary Function/Permeability):","सूची-I (नेफ्रॉन क्षेत्र) को सूची-II (प्राथमिक कार्य/पारगम्यता) से सुमेलित करें:",
+ ["A. Proximal Convoluted Tubule (PCT)","B. Descending Limb of Henle","C. Ascending Limb of Henle","D. Distal Convoluted Tubule (DCT)"],
+ ["1. Maximum reabsorption of water & nutrients / जल व पोषक तत्वों का अधिकतम अवशोषण","2. Permeable to water, impermeable to salts / जल के लिए पारगम्य","3. Impermeable to water, active transport of NaCl / जल के लिए अपारगम्य","4. Conditional reabsorption of Na+ & water under ADH/Aldosterone / सशर्त अवशोषण"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-4,B-2,C-1,D-3"],0,
+ "PCT → maximum reabsorption, Descending limb → water permeable, Ascending limb → water impermeable with active NaCl transport, DCT → conditional reabsorption under ADH/aldosterone.",
+ "PCT में जल व पोषक तत्वों का अधिकतम अवशोषण; अवरोही भुजा जल के लिए पारगम्य; आरोही भुजा जल के लिए अपारगम्य (NaCl का सक्रिय परिवहन); DCT में ADH/एल्डोस्टेरोन के अधीन सशर्त अवशोषण।",null),
+
+MQ(EX,"Match List-I (Excretory Animal Class) with List-II (Main Excretory Product):","सूची-I (उत्सर्जी जीव वर्ग) को सूची-II (मुख्य उत्सर्जी उत्पाद) से सुमेलित करें:",
+ ["A. Bony Fish & Tadpole / अस्थिल मछली व टेडपोल","B. Human & Adult Frog / मानव व वयस्क मेंढक","C. Birds, Reptiles & Insects / पक्षी, सरीसृप व कीट","D. Spiders & Scorpions / मकड़ी व बिच्छू"],
+ ["1. Ammonia / अमोनिया","2. Urea / यूरिया","3. Uric Acid / यूरिक एसिड","4. Guanine / ग्वानिन"],
+ ["A-2,B-1,C-4,D-3","A-1,B-2,C-3,D-4","A-1,B-3,C-2,D-4","A-3,B-4,C-1,D-2"],1,
+ "Bony fish & tadpole → ammonia, human & adult frog → urea, birds/reptiles/insects → uric acid, spiders & scorpions → guanine.",
+ "अस्थिल मछली व टेडपोल → अमोनिया; मानव व वयस्क मेंढक → यूरिया; पक्षी, सरीसृप व कीट → यूरिक एसिड; मकड़ी व बिच्छू → ग्वानिन।",null),
+
+MQ(EX,"Match List-I (Excretory Organism/Group) with List-II (Excretory Structure):","सूची-I (जीव/समूह) को सूची-II (उत्सर्जन अंग/संरचना) से सुमेलित करें:",
+ ["A. Flatworms (Platyhelminthes) / फीताकृमि","B. Earthworm (Annelida) / केंचुआ","C. Cockroach (Arthropoda) / कॉकरोच","D. Prawn (Crustacea) / झींगा"],
+ ["1. Flame cells (Protonephridia) / ज्वाला कोशिकाएं","2. Nephridia / नेफ्रिडिया","3. Malpighian Tubules / मालपिघियन नलिकाएं","4. Antennal / Green Glands / ग्रीन ग्रंथियां"],
+ ["A-1,B-2,C-3,D-4","A-2,B-1,C-4,D-3","A-1,B-3,C-2,D-4","A-4,B-3,C-1,D-2"],0,
+ "Flatworms → flame cells, Earthworm → nephridia, Cockroach → Malpighian tubules, Prawn → antennal (green) glands.",
+ "फीताकृमि → ज्वाला कोशिकाएं; केंचुआ → नेफ्रिडिया; कॉकरोच → मालपिघियन नलिकाएं; झींगा → एंटेनल/ग्रीन ग्रंथियां।",null),
+
+Q(EX,"Which blood vessel carries blood away from the glomerulus in a nephron?","नेफ्रॉन में ग्लोमेरुलस से रक्त को दूर ले जाने वाली रक्त वाहिका कौन सी है?",
+ [opt("Afferent Arteriole","अभिवाही धमनी"),opt("Efferent Arteriole","अपवाही धमनी"),opt("Renal Vein","वृक्क शिरा"),opt("Renal Artery","वृक्क धमनी")],1,
+ "The efferent arteriole carries blood away from the glomerulus; the afferent arteriole brings blood to it.",
+ "ग्लोमेरुलस से रक्त को दूर ले जाने का कार्य अपवाही धमनी (Efferent Arteriole) करती है, जबकि अभिवाही धमनी रक्त को ग्लोमेरुलस तक लाती है।",null,
+ "Afferent = Arriving; Efferent = Exiting."),
+
+Q(EX,"What is the metabolic cycle occurring in liver cells that converts harmful ammonia into urea?","यकृत कोशिकाओं में होने वाला वह उपापचयी चक्र कौन सा है जो हानिकारक अमोनिया को यूरिया में बदलता है?",
+ [opt("Krebs Cycle","क्रेब्स चक्र"),opt("Ornithine Cycle (Urea Cycle)","ऑर्निथिन चक्र (यूरिया चक्र)"),opt("Calvin Cycle","केल्विन चक्र"),opt("Glycolysis","ग्लाइकोलाइसिस")],1,
+ "The Ornithine (Urea) Cycle in liver cells converts toxic ammonia into less toxic urea.",
+ "यकृत कोशिकाओं में ऑर्निथिन चक्र (यूरिया चक्र) हानिकारक अमोनिया को कम हानिकारक यूरिया में बदलता है।",null),
+
+Q(EX,"Which part of the human nephron is primarily responsible for maintaining the pH and ionic balance of body fluids through selective secretion of H+ and K+ ions?","मानव नेफ्रॉन का कौन सा भाग H+ और K+ आयनों के चयनात्मक स्राव द्वारा शरीर के तरल पदार्थों के pH और आयनिक संतुलन को बनाए रखने के लिए मुख्य रूप से जिम्मेदार है?",
+ [opt("Bowman's Capsule","बोमन कैप्सूल"),opt("Distal Convoluted Tubule (DCT)","दूरस्थ संवलित नलिका"),opt("Descending Loop of Henle","हेनले का अवरोही लूप"),opt("Glomerulus","ग्लोमेरुलस")],1,
+ "The DCT (with the collecting duct) selectively secretes H+ and K+ ions and helps maintain pH and ionic balance.",
+ "दूरस्थ संवलित नलिका (DCT) H+ और K+ आयनों का चयनात्मक स्राव करके शरीर के तरल पदार्थों का pH और आयनिक संतुलन बनाए रखती है।",null),
+
+Q(EX,"Renal calculi (Kidney stones) are most commonly composed of crystals of which chemical compound?","गुर्दे की पथरी (Renal Calculi) आमतौर पर किस रासायनिक यौगिक के क्रिस्टल से बनी होती है?",
+ [opt("Calcium Oxalate","कैल्शियम ऑक्सलेट"),opt("Sodium Chloride","सोडियम क्लोराइड"),opt("Calcium Carbonate","कैल्शियम कार्बोनेट"),opt("Potassium Chloride","पोटेशियम क्लोराइड")],0,
+ "Kidney stones are most commonly made of calcium oxalate crystals.",
+ "गुर्दे की पथरी सबसे आमतौर पर कैल्शियम ऑक्सलेट के क्रिस्टल से बनी होती है।",null),
+
+Q(EX,"What percentage of cardiac output (total blood pumped by heart per minute) is received by both human kidneys together under normal conditions?","सामान्य परिस्थितियों में दोनों मानव गुर्दों को हृदय द्वारा प्रति मिनट पंप किए गए कुल रक्त का कितना प्रतिशत प्राप्त होता है?",
+ [opt("5 - 10%","5 - 10%"),opt("20 - 25%","20 - 25%"),opt("40 - 50%","40 - 50%"),opt("60 - 70%","60 - 70%")],1,
+ "The kidneys receive about 20–25% of cardiac output (roughly 1100–1200 mL of blood per minute).",
+ "सामान्य परिस्थितियों में दोनों गुर्दों को हृदय के कुल निकास (cardiac output) का लगभग 20-25% रक्त प्राप्त होता है।",null),
+
+Q(EX,"Which condition refers to the presence of blood cells in human urine?","मानव मूत्र में रक्त कोशिकाओं की उपस्थिति को क्या कहा जाता है?",
+ [opt("Hematuria","हेमेटुरिया"),opt("Anuria","एनुरिया"),opt("Glycosuria","ग्लाइकोसुरिया"),opt("Pyuria","पायुरिया")],0,
+ "Hematuria = blood cells in urine. Anuria = absence of urine, Glycosuria = glucose in urine, Pyuria = pus cells in urine.",
+ "मूत्र में रक्त कोशिकाओं की उपस्थिति हेमेटुरिया कहलाती है। एनुरिया = मूत्र का न बनना, ग्लाइकोसुरिया = मूत्र में ग्लूकोज, पायुरिया = मूत्र में मवाद कोशिकाएं।",null),
+
+Q(EX,"Which enzyme is secreted by the Juxtaglomerular (JG) cells when renal blood flow or blood pressure drops?","जब गुर्दे का रक्त प्रवाह या रक्तचाप गिरता है तो जुक्स्टाग्लोमेरुलर (JG) कोशिकाओं द्वारा कौन सा एंजाइम स्रावित होता है?",
+ [opt("Pepsin","पेप्सिन"),opt("Renin","रेनिन"),opt("Ptyalin","टायलिन"),opt("Lipase","लाइपेस")],1,
+ "JG cells release Renin when renal blood flow or blood pressure falls, activating the RAAS pathway.",
+ "गुर्दे का रक्त प्रवाह या रक्तचाप गिरने पर JG कोशिकाएं रेनिन स्रावित करती हैं, जो RAAS प्रणाली को सक्रिय करता है।",null),
+];
+
+const TAGLINES=["🔥 BRAIN BLAST!","🧠 CAN YOU CRACK IT?","🎯 EXAM TRAP!","🚨 DON'T FALL FOR THE TRAP!","🏆 BOSS LEVEL!"];
+const MOTIVATE=["ध्यान से सोचिए… इसमें एक ट्रैप है! 👀","जवाब लॉक करने से पहले अच्छी तरह सोच लें! 🔒","जल्दबाजी न करें—हर विकल्प ध्यान से पढ़ें! 🎯","दिमाग लगाइए, यह सवाल आपकी परीक्षा में आ सकता है! 💪","एक गहरी सांस लें और ध्यान से पढ़ें! 🧘"];
+function shuffleTag(arr,i){return arr[i % arr.length];}
+
+const state={idx:0,score:0,correctCount:0,wrongCount:0,answered:false,timer:null,timeLeft:TOTAL_TIME,name:""};
+const app=document.getElementById('app');
+
+function renderStart(){
+  app.innerHTML=`
+    <div class="hero">
+      <div class="tagline">🎮 GAME-SHOW QUIZ CHALLENGE 🎮</div>
+      <h1>ROUTINE-8</h1>
+      <p>Daroga / Police / BPSC / BSSC · Bilingual Game-Show Quiz · ${QUESTIONS.length} Questions</p>
+    </div>
+    <div class="card">
+      <p style="color:var(--dim);font-size:14px;margin-bottom:10px;">Enter your name to begin / शुरू करने के लिए अपना नाम दर्ज करें:</p>
+      <input type="text" id="nameInput" placeholder="Your Name / आपका नाम" />
+      <div class="center"><button class="btn" id="startBtn">🚀 Start Quiz / शुरू करें</button></div>
+    </div>
+    <div class="card" style="font-size:13px;color:var(--dim);line-height:1.6;">
+      📚 Topics: INC History, Indian Rivers, African Capitals, Excretory System<br>
+      ⏱️ ${TOTAL_TIME} seconds per question &nbsp;|&nbsp; 🏆 Scoreboard every 10 questions
+    </div>
+  `;
+  document.getElementById('startBtn').onclick=()=>{
+    state.name=document.getElementById('nameInput').value.trim()||"Champion";
+    renderQuestion();
+  };
+}
+
+function renderQuestion(){
+  if(state.idx>=QUESTIONS.length){renderFinal();return;}
+  const q=QUESTIONS[state.idx];
+  state.answered=false;
+  state.timeLeft=TOTAL_TIME;
+  let matchHtml="";
+  if(q.matchTable){
+    matchHtml=`<div class="matchbox">
+      <div class="matchcol"><h4>List-I</h4>${q.matchTable.left.map(x=>`<div class="matchrow">${x}</div>`).join('')}</div>
+      <div class="matchcol"><h4>List-II</h4>${q.matchTable.right.map(x=>`<div class="matchrow">${x}</div>`).join('')}</div>
+    </div>`;
+  }
+  app.innerHTML=`
+    <div class="scorebar"><span>Q ${state.idx+1} / ${QUESTIONS.length}</span><span>Score: <b>${state.score}</b></span></div>
+    <div class="card">
+      <div class="taghead">
+        <span class="tagline">${shuffleTag(TAGLINES,state.idx)}</span>
+        <span class="cat-tag">${q.cat}</span>
+      </div>
+      <div class="timer-wrap"><div class="timer-ring" id="ring" style="--pct:100"><div class="timer-inner" id="timerNum">${TOTAL_TIME}</div></div></div>
+      <p class="motivate">${shuffleTag(MOTIVATE,state.idx)}</p>
+      <div class="qtext">${q.en}<br><br><b>प्र.</b> ${q.hi}</div>
+      ${matchHtml}
+      <div class="options" id="optionsWrap">
+        ${q.options.map((o,i)=>`<button class="opt" data-i="${i}">${String.fromCharCode(65+i)}. ${o.en} / ${o.hi}</button>`).join('')}
+      </div>
+      <div id="resultBox"></div>
+      <div class="next-row" id="nextRow" style="display:none;"><button class="btn" id="nextBtn">Next Question ➡️</button></div>
+    </div>
+  `;
+  document.querySelectorAll('.opt').forEach(btn=>{
+    btn.onclick=()=>selectAnswer(parseInt(btn.dataset.i));
+  });
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(state.timer);
+  const ring=document.getElementById('ring');
+  const numEl=document.getElementById('timerNum');
+  state.timer=setInterval(()=>{
+    state.timeLeft--;
+    const pct=Math.max(0,(state.timeLeft/TOTAL_TIME)*100);
+    if(ring){ring.style.setProperty('--pct',pct);}
+    if(numEl){numEl.textContent=Math.max(0,state.timeLeft);}
+    if(ring && pct<20){ring.classList.add('warn');}
+    if(state.timeLeft<=0 && !state.answered){
+      selectAnswer(-1);
+    }
+  },1000);
+}
+
+function selectAnswer(choice){
+  if(state.answered)return;
+  state.answered=true;
+  clearInterval(state.timer);
+  const q=QUESTIONS[state.idx];
+  const opts=document.querySelectorAll('.opt');
+  opts.forEach(b=>b.setAttribute('disabled','true'));
+  const isCorrect=choice===q.correct;
+  if(isCorrect){
+    state.score+=10;
+    state.correctCount++;
+    opts[choice].classList.add('correct');
+  }else{
+    state.wrongCount++;
+    if(choice>=0)opts[choice].classList.add('wrong');
+    opts[q.correct].classList.add('correct');
+  }
+  const resultBox=document.getElementById('resultBox');
+  const tipHtml=q.tip?`<p>💡 <b>Exam Tip:</b> ${q.tip}</p>`:"";
+  if(isCorrect){
+    resultBox.innerHTML=`<div class="result ok"><h3>🎉 CORRECT! 🔥</h3><p>🏆 Correct Answer: ${String.fromCharCode(65+q.correct)} — ${q.options[q.correct].en} / ${q.options[q.correct].hi}</p><p>📚 Why? ${q.exp_en}</p><p>${q.exp_hi}</p>${tipHtml}</div>`;
+  }else{
+    const timeUp=choice===-1;
+    const yours=timeUp?"":`<p>❎ Your Answer: ${String.fromCharCode(65+choice)} — ${q.options[choice].en} / ${q.options[choice].hi} — this is not correct.</p>`;
+    resultBox.innerHTML=`<div class="result bad"><h3>${timeUp?"⏰ TIME'S UP!":"❌ NOT QUITE!"}</h3>
+      <p>🏆 Correct Answer: ${String.fromCharCode(65+q.correct)} — ${q.options[q.correct].en} / ${q.options[q.correct].hi}</p>${yours}
+      <p>📚 Why? ${q.exp_en}</p>
+      <p>${q.exp_hi}</p>${tipHtml}</div>`;
+  }
+  document.getElementById('nextRow').style.display='block';
+  document.getElementById('nextBtn').onclick=()=>{
+    state.idx++;
+    if(state.idx%10===0 && state.idx>0){
+      showScoreboard(state.idx>=QUESTIONS.length);
+    }else{
+      renderQuestion();
+    }
+  };
+}
+
+function showScoreboard(isLast){
+  const total=state.correctCount+state.wrongCount;
+  const acc=total>0?Math.round((state.correctCount/total)*100):0;
+  let comment;
+  if(acc>=85)comment="🔥 You're on fire! Keep the momentum going!";
+  else if(acc>=60)comment="⚡ Solid performance! A little more focus and you'll ace it!";
+  else if(acc>=40)comment="💪 The traps are getting you—time to fight back!";
+  else comment="📘 Don't worry, every topper started somewhere. Keep pushing!";
+  const overlay=document.createElement('div');
+  overlay.className='overlay';
+  overlay.innerHTML=`
+    <div class="board">
+      <h2>🏆 QUIZ SCOREBOARD</h2>
+      <div class="stat"><span>✅ Correct:</span><b>${state.correctCount}</b></div>
+      <div class="stat"><span>❌ Incorrect:</span><b>${state.wrongCount}</b></div>
+      <div class="stat"><span>🎯 Accuracy:</span><b>${acc}%</b></div>
+      <div class="comment">${comment}</div>
+      <button class="btn" id="continueBtn">${isLast?"See Final Result 🏁":"Continue ➡️"}</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.getElementById('continueBtn').onclick=()=>{
+    overlay.remove();
+    if(isLast){renderFinal();}else{renderQuestion();}
+  };
+}
+
+function renderFinal(){
+  const total=state.correctCount+state.wrongCount;
+  const acc=total>0?Math.round((state.correctCount/total)*100):0;
+  let grade;
+  if(acc>=85)grade="🏆 TOPPER";
+  else if(acc>=65)grade="🥈 STRONG";
+  else if(acc>=40)grade="🥉 GROWING";
+  else grade="📘 KEEP GOING";
+  app.innerHTML=`
+    <div class="hero">
+      <h1>${grade}</h1>
+      <p>${state.name}, here's your final performance!</p>
+    </div>
+    <div class="card center">
+      <div class="stat" style="font-size:18px;margin:10px 0;">🏅 Final Score: <b>${state.score}</b></div>
+      <div class="stat" style="font-size:16px;margin:10px 0;">✅ Correct: ${state.correctCount} &nbsp; ❌ Incorrect: ${state.wrongCount}</div>
+      <div class="stat" style="font-size:16px;margin:10px 0;">🎯 Accuracy: ${acc}%</div>
+      <button class="btn" id="restartBtn">🔄 Restart Quiz / फिर से शुरू करें</button>
+    </div>
+  `;
+  document.getElementById('restartBtn').onclick=()=>{
+    state.idx=0;state.score=0;state.correctCount=0;state.wrongCount=0;
+    renderStart();
+  };
+}
+
+renderStart();
+
+</script>
+</body>
+</html>
